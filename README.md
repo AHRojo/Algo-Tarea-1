@@ -1,6 +1,6 @@
 # Tarea 1 Algoritmos y Complejidad INF 221
 
-* Integrantes
+# Integrantes
 * Andrés Huerta
 * Felipe Montero
 * Felipe Vega
