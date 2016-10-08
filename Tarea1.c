@@ -2,21 +2,18 @@
 #include <string.h>
 
 int construirMatriz(){
-    int i, j, Matriz[999][999];
-    printf("hola\n");
+    int i, j;
+    char fila[999], Matriz[999][999];
     for(i = 0; i < 999; i++){
-            Matriz[i][j] = fgets("%s", sizeof(char*999), stdin);
+        fgets(fila, sizeof(fila), stdin);
+        strcpy(Matriz[i], fila);
+        if (strcmp(fila, "\n") == 0){
+            break;
         }
     }
-    for(i = 0; i < 999; i++){
-        printf("%c", Matriz[i][0]);
-    }
-    return Matriz;
+    return 0;
 }
 
 int main(){
-    printf("hola\n");
-    construirMatriz();
-
     return 0;
 }
