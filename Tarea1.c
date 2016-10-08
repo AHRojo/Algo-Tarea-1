@@ -2,7 +2,7 @@
 #include <string.h>
 
 int construirMatriz(){
-    int i, j;
+    int i;
     char fila[999], Matriz[999][999];
     for(i = 0; i < 999; i++){
         fgets(fila, sizeof(fila), stdin);
