@@ -2,7 +2,6 @@
 #include <stdlib.h>
 #include "cola.h"
 
-
 tCola * newCola(int capacidad){
     tCola *cola;
     cola = (tCola *)malloc(sizeof(tCola));
