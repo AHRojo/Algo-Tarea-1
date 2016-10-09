@@ -71,6 +71,67 @@ void calcularArea(char **M){
     return;
 }
 
+void agregarVecinos(tCola * cola, tCoordenada * coordenada, char **M){
+    tCoordenada * coordenadaVecino;
+    int fila = coordenada->fila;
+    int columna = coordenada->columna;
+    if(fila == 0){
+        if(columna == 0){
+            if(M[fila - 1][columna]=='W'){
+                coordenadaVecino = newCoordenada(fila - 1, columna);
+                enqueue(cola, coordenadaVecino);
+            }
+            if(M[fila - 1][columna + 1] == 'W'){
+                coordenadaVecino = newCoordenada(fila - 1, columna + 1);
+                enqueue(cola, coordenadaVecino);
+            }
+            if(M[fila][columna + 1] == 'W'){
+                coordenadaVecino = newCoordenada(fila, columna + 1);
+                enqueue(cola, coordenadaVecino);
+            }
+        }
+        else if(columna == 999){
+            if(M[fila - 1][columna]=='W'){
+                coordenadaVecino = newCoordenada(fila - 1, columna);
+                enqueue(cola, coordenadaVecino);
+            }
+            if(M[fila - 1][columna - 1] == 'W'){
+                coordenadaVecino = newCoordenada(fila - 1, columna - 1);
+                enqueue(cola, coordenadaVecino);
+            }
+            if(M[fila][columna - 1] == 'W'){
+                coordenadaVecino = newCoordenada(fila, columna - 1);
+                enqueue(cola, coordenadaVecino);
+            }
+        }
+        else{
+            if(M[fila][columna - 1] == 'W'){
+                coordenadaVecino = newCoordenada(fila, columna - 1);
+                enqueue(cola, coordenadaVecino);
+            }
+            if(M[fila][columna + 1] == 'W'){
+                coordenadaVecino = newCoordenada(fila, columna + 1);
+                enqueue(cola, coordenadaVecino);
+            }
+            if(M[fila - 1][columna + 1] == 'W'){
+                coordenadaVecino = newCoordenada(fila - 1, columna+1);
+                enqueue(cola, coordenadaVecino);
+            }
+            if(M[fila - 1][columna] == 'W'){
+                coordenadaVecino = newCoordenada(fila - 1, columna);
+                enqueue(cola, coordenadaVecino);
+            }
+            if(M[fila - 1][columna - 1] == 'W'){
+                coordenadaVecino = newCoordenada(fila - 1, columna - 1);
+                enqueue(cola, coordenadaVecino);
+            }
+        }
+    }
+    else if(fila == 999){
+
+    }
+}
+
 int main(){
     char **M;
     M = construirMatriz();

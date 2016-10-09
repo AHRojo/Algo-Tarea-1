@@ -50,9 +50,19 @@ int enqueue(tCola * cola, tCoordenada * elemento){
 }
 
 void destroy(tCola * cola){
+    for(int i = 0; i < cola->maximoElementos; i++){
+        free(&cola->contenido[i]);
+    }
     free(cola->contenido);
     free(cola);
     return;
+}
+
+tCoordenada * newCoordenada(int fila, int columna){
+    tCoordenada * newCoordenada = (tCoordenada *)malloc(sizeof(tCoordenada));
+    newCoordenada->fila = fila;
+    newCoordenada->columna = columna;
+    return newCoordenada;
 }
 /*
 int main(){
@@ -74,4 +84,3 @@ int main(){
     return 0;
 }
 */
-

@@ -19,5 +19,5 @@ int SCola(tCola *);
 tCoordenada * dequeue(tCola *);
 int enqueue(tCola *,tCoordenada *);
 void destroy(tCola *);
-
+tCoordenada * newCoordenada(int, int);
 #endif
