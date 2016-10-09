@@ -1,3 +1,6 @@
+#ifndef _COLA_H_INCLUDED_
+#define _COLA_H_INCLUDED_
+
 typedef struct Coordenada{
     int fila;
     int columna;
@@ -17,3 +20,4 @@ tCoordenada * dequeue(tCola *);
 int enqueue(tCola *,tCoordenada *);
 void destroy(tCola *);
 
+#endif
