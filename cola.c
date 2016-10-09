@@ -47,26 +47,10 @@ int enqueue(tCola * cola, tCoordenada * elemento){
 }
 
 void destroy(tCola * cola){
+    for(int i = 0; i < cola->maximoElementos;i++){
+        free(cola->contenido[i]);
+    }
     free(cola->contenido);
     free(cola);
     return;
-}
-
-int main(){
-    tCoordenada * co1 = (tCoordenada *)malloc(sizeof(tCoordenada));
-    tCoordenada * co2 = (tCoordenada *)malloc(sizeof(tCoordenada));
-    co1->fila=1;
-    co1->columna=10;
-    co2->fila=35;
-    co2->columna=2;
-    tCola * cola = newCola(3);
-    enqueue(cola, co1);
-    enqueue(cola, co2);
-
-    tCoordenada * co3;
-    co3 = dequeue(cola);
-    printf("fila: %d columna: %d\n",co3->fila,co3->columna);
-    co3 = dequeue(cola);
-    printf("fila: %d columna: %d\n",co3->fila,co3->columna);
-    return 0;
 }
