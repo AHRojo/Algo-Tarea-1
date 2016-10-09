@@ -3,6 +3,13 @@
 #include <stdlib.h>
 #include "cola.h"
 
+/*
+    Constructor de matriz de tierras, se crea un arreglo de arreglos a traves de memoria dinamica,
+    cada arreglo interno corresponde a cada linea entregada por la linea de comando. como no se sabe cuantas filas tendra
+    la matriz se utiliza el valor maximo posible, a diferencia de las columnas las cuales corresponderan al largo
+    de la fila
+*/
+
 char** construirMatriz(){
     int i;
     char letra[999], **Matriz;
@@ -19,12 +26,23 @@ char** construirMatriz(){
     return Matriz;
 }
 
-void recorridoAncho(char **M, int k, int l){
-    return;
+int recorridoAncho(char **M, tCola *Q){
+    tCoordenada *Cord;
+
+    while(SCola(Q) != 0){
+        Cord = dequeue(Q);
+        //if(Cord->fila )
+    }
+    return 0;
+}
+
+int buscarArea(char **M, int i, int j){
+    return 0;
 }
 
 void calcularArea(char **M){
-    int i, j;
+    int i, j, tamano;
+    tCola *Cola;
     char linea[10];
     while (1){
         fgets(linea, sizeof(linea), stdin);
@@ -32,7 +50,19 @@ void calcularArea(char **M){
             break;
         }
         sscanf(linea, "%i %i", &i, &j);
-        recorridoAncho(M, i, j);
+        if(M[i][j] == 'V'){
+            tamano = buscarArea(M, i, j);
+        }
+        else{
+            M[i][j] = 'P';
+            Cola = newCola(999);
+            tCoordenada *Coordenada = (tCoordenada *)malloc(sizeof(tCoordenada));
+            Coordenada->fila = i;
+            Coordenada->columna = j;
+            enqueue(Cola, Coordenada);
+            tamano = 1;
+            tamano += recorridoAncho(M, Cola);
+        }
     }
     for(i = 0; i < 999; i++){
         free(M[i]);
@@ -44,6 +74,6 @@ void calcularArea(char **M){
 int main(){
     char **M;
     M = construirMatriz();
-    calcularArea(M);
+    //calcularArea(M);
     return 0;
 }
