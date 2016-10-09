@@ -1,5 +1,5 @@
 Completo: Tarea1.o cola.o
-	gcc Tarea1.o cola.o -o Tarea -o -Wall
+	gcc -Wall Tarea1.o cola.o -o Tarea -o Ejercicio1
 
 Tarea1.o: Tarea1.c
 	gcc -c Tarea1.c -Wall
