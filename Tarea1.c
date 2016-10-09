@@ -1,17 +1,20 @@
 #include <stdio.h>
 #include <string.h>
 
-int construirMatriz(){
+char** construirMatriz(){
     int i;
-    char fila[999], Matriz[999][999];
+    char letra[999], **Matriz;
+    Matriz = malloc(sizeof(char)*999);
     for(i = 0; i < 999; i++){
-        fgets(fila, sizeof(fila), stdin);
-        strcpy(Matriz[i], fila);
-        if (strcmp(fila, "\n") == 0){
-            break;
-        }
+        Matriz[i] = (char *)malloc(sizeof(char)*999);
     }
-    return 0;
+    fgets(letra, sizeof(letra), stdin);
+    for(i = 0; i < 999; i++){
+        fgets(letra, sizeof(letra), stdin);
+        if(letra[0] == '\n') break;
+        strcpy(Matriz[i], letra);
+    }
+    return Matriz;
 }
 
 int main(){
