@@ -11,4 +11,4 @@ all: Completo
 
 clean:
 	rm *.o
-	rm Tarea
+	rm Ejercicio1
