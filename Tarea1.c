@@ -1,5 +1,7 @@
 #include <stdio.h>
 #include <string.h>
+#include <stdlib.h>
+#include "cola.h"
 
 char** construirMatriz(){
     int i;
@@ -15,6 +17,26 @@ char** construirMatriz(){
         strcpy(Matriz[i], letra);
     }
     return Matriz;
+}
+
+void calcularArea(char **M){
+    int i, j;
+    char linea[10];
+    while (1){
+        fgets(linea, sizeof(linea), stdin);
+        if(linea[0] == '\n'){
+            break;
+        }
+        sscanf(linea, "%i %i", &i, &j);
+        recorridoAncho(M, i, j);
+    }
+    return;
+    
+}
+
+void recorridoAncho(char **M, int k, int l){
+    printf("mauricio\n");
+    return;
 }
 
 int main(){
