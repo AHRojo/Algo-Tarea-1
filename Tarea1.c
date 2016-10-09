@@ -31,7 +31,7 @@ int recorridoAncho(char **M, tCola *Q){
 
     while(SCola(Q) != 0){
         Cord = dequeue(Q);
-        //if(Cord->fila )
+        //if(Cord->fila == )
     }
     return 0;
 }
@@ -51,14 +51,14 @@ void calcularArea(char **M){
         }
         sscanf(linea, "%i %i", &i, &j);
         if(M[i][j] == 'V'){
-            tamano = buscarArea(M, i, j);
+            tamano = buscarArea(M, i-1, j-1);
         }
         else{
             M[i][j] = 'P';
             Cola = newCola(999);
             tCoordenada *Coordenada = (tCoordenada *)malloc(sizeof(tCoordenada));
-            Coordenada->fila = i;
-            Coordenada->columna = j;
+            Coordenada->fila = i-1;
+            Coordenada->columna = j-1;
             enqueue(Cola, Coordenada);
             tamano = 1;
             tamano += recorridoAncho(M, Cola);
@@ -77,3 +77,4 @@ int main(){
     //calcularArea(M);
     return 0;
 }
+
