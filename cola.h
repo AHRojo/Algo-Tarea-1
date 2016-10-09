@@ -14,7 +14,7 @@ typedef struct Cola{
         tCoordenada * contenido;
 }tCola;
 
-tCola newCola(int);
+tCola* newCola(int);
 int SCola(tCola *);
 tCoordenada * dequeue(tCola *);
 int enqueue(tCola *,tCoordenada *);
