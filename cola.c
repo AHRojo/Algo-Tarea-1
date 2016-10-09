@@ -45,3 +45,13 @@ int enqueue(tCola * cola, char elemento){
     }
     return 1;
 }
+
+void destroy(tCola * cola){
+    free(cola->contenido);
+    free(cola);
+    return;
+}
+
+int main(){
+    return 0;
+}
