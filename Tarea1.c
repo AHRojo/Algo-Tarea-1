@@ -6,7 +6,7 @@
 char** construirMatriz(){
     int i;
     char letra[999], **Matriz;
-    Matriz = malloc(sizeof(char)*999);
+    Matriz = (char **)malloc(sizeof(char *)*999);
     for(i = 0; i < 999; i++){
         Matriz[i] = (char *)malloc(sizeof(char)*999);
     }
@@ -17,6 +17,10 @@ char** construirMatriz(){
         strcpy(Matriz[i], letra);
     }
     return Matriz;
+}
+
+void recorridoAncho(char **M, int k, int l){
+    return;
 }
 
 void calcularArea(char **M){
@@ -30,15 +34,16 @@ void calcularArea(char **M){
         sscanf(linea, "%i %i", &i, &j);
         recorridoAncho(M, i, j);
     }
-    return;
-    
-}
-
-void recorridoAncho(char **M, int k, int l){
-    printf("mauricio\n");
+    for(i = 0; i < 999; i++){
+        free(M[i]);
+    }
+    free(M);
     return;
 }
 
 int main(){
+    char **M;
+    M = construirMatriz();
+    calcularArea(M);
     return 0;
 }
