@@ -1,4 +1,4 @@
-#include <stdio.h>
+##include <stdio.h>
 #include <string.h>
 #include <stdlib.h>
 #include "cola.h"
@@ -9,6 +9,212 @@
     la matriz se utiliza el valor maximo posible, a diferencia de las columnas las cuales corresponderan al largo
     de la fila
 */
+
+int agregarVecinos(tCola * cola, tCoordenada * coordenada, char **M){
+    int agregados = 0;
+    tCoordenada * coordenadaVecino;
+    int fila = coordenada->fila;
+    int columna = coordenada->columna;
+    if(fila == 0){
+        if(columna == 0){
+            if(M[fila][columna + 1] == 'W'){
+                M[fila][columna + 1] = 'V';
+                agregados += 1;
+                coordenadaVecino = newCoordenada(fila, columna + 1);
+                enqueue(cola, coordenadaVecino);
+            }
+            if(M[fila + 1][columna + 1] == 'W'){
+                M[fila + 1][columna + 1] = 'V';
+                agregados += 1;
+                coordenadaVecino = newCoordenada(fila + 1, columna + 1);
+                enqueue(cola, coordenadaVecino);
+            }
+            if(M[fila + 1][columna] == 'W'){
+                M[fila + 1][columna] = 'V';
+                agregados += 1;
+                coordenadaVecino = newCoordenada(fila + 1, columna);
+                enqueue(cola, coordenadaVecino);
+            }
+        }
+        else if(columna == 999){
+            if(M[fila][columna - 1]=='W'){
+                M[fila][columna - 1] = 'V';
+                agregados += 1;
+                coordenadaVecino = newCoordenada(fila, columna - 1);
+                enqueue(cola, coordenadaVecino);
+            }
+            if(M[fila + 1][columna - 1] == 'W'){
+                M[fila + 1][columna - 1] = 'V';
+                agregados += 1;
+                coordenadaVecino = newCoordenada(fila + 1, columna - 1);
+                enqueue(cola, coordenadaVecino);
+            }
+            if(M[fila + 1][columna] == 'W'){
+                M[fila + 1][columna] = 'V';
+                agregados += 1;
+                coordenadaVecino = newCoordenada(fila + 1, columna);
+                enqueue(cola, coordenadaVecino);
+            }
+        }
+        else{
+            if(M[fila][columna - 1] == 'W'){
+                M[fila][columna - 1] = 'V';
+                agregados += 1;
+                coordenadaVecino = newCoordenada(fila, columna - 1);
+                enqueue(cola, coordenadaVecino);
+            }
+            if(M[fila][columna + 1] == 'W'){
+                M[fila][columna + 1] = 'V';
+                agregados += 1;
+                coordenadaVecino = newCoordenada(fila, columna + 1);
+                enqueue(cola, coordenadaVecino);
+            }
+            if(M[fila +1][columna + 1] == 'W'){
+                M[fila + 1][columna + 1] = 'V';
+                agregados += 1;
+                coordenadaVecino = newCoordenada(fila + 1, columna+1);
+                enqueue(cola, coordenadaVecino);
+            }
+            if(M[fila + 1][columna] == 'W'){
+                M[fila + 1][columna] = 'V';
+                agregados += 1;
+                coordenadaVecino = newCoordenada(fila + 1, columna);
+                enqueue(cola, coordenadaVecino);
+            }
+            if(M[fila + 1][columna - 1] == 'W'){
+                M[fila + 1][columna - 1] = 'V';
+                agregados += 1;
+                coordenadaVecino = newCoordenada(fila + 1, columna - 1);
+                enqueue(cola, coordenadaVecino);
+            }
+        }
+    }
+    else if(fila == 999){
+        if(columna == 0){
+            if(M[fila - 1][columna] == 'W'){
+                M[fila - 1][columna] = 'V';
+                agregados += 1;
+                coordenadaVecino = newCoordenada(fila - 1, columna);
+                enqueue(cola, coordenadaVecino);
+            }
+            if(M[fila - 1][columna + 1] == 'W'){
+                M[fila - 1][columna + 1] = 'V';
+                agregados += 1;
+                coordenadaVecino = newCoordenada(fila - 1, columna + 1);
+                enqueue(cola, coordenadaVecino);
+            }
+            if(M[fila][columna + 1] == 'W'){
+                M[fila][columna + 1] = 'V';
+                agregados += 1;
+                coordenadaVecino = newCoordenada(fila, columna + 1);
+                enqueue(cola, coordenadaVecino);
+            }
+        }
+        else if(columna == 999){
+            if(M[fila][columna - 1] == 'W'){
+                M[fila][columna - 1] = 'V';
+                agregados += 1;
+                coordenadaVecino = newCoordenada(fila, columna - 1);
+                enqueue(cola, coordenadaVecino);
+            }
+            if(M[fila - 1][columna - 1] == 'W'){
+                M[fila - 1][columna - 1] = 'V';
+                agregados += 1;
+                coordenadaVecino = newCoordenada(fila - 1, columna - 1);
+                enqueue(cola, coordenadaVecino);
+            }
+            if(M[fila - 1][columna] == 'W'){
+                M[fila - 1][columna] = 'V';
+                agregados += 1;
+                coordenadaVecino = newCoordenada(fila - 1, columna);
+                enqueue(cola, coordenadaVecino);
+            }
+        }
+        else{
+            if(M[fila][columna - 1] == 'W'){
+                M[fila][columna - 1] = 'V';
+                agregados += 1;
+                coordenadaVecino = newCoordenada(fila, columna - 1);
+                enqueue(cola, coordenadaVecino);
+            }
+            if(M[fila - 1][columna - 1] == 'W'){
+                M[fila - 1][columna - 1] = 'V';
+                agregados += 1;
+                coordenadaVecino = newCoordenada(fila - 1, columna - 1);
+                enqueue(cola, coordenadaVecino);
+            }
+            if(M[fila - 1][columna] == 'W'){
+                M[fila - 1][columna] = 'V';
+                agregados += 1;
+                coordenadaVecino = newCoordenada(fila - 1, columna);
+                enqueue(cola, coordenadaVecino);
+            }
+            if(M[fila - 1][columna + 1] == 'W'){
+                M[fila - 1][columna + 1] = 'V';
+                agregados += 1;
+                coordenadaVecino = newCoordenada(fila - 1, columna + 1);
+                enqueue(cola, coordenadaVecino);
+            }
+            if(M[fila][columna + 1] == 'W'){
+                M[fila][columna + 1] = 'V';
+                agregados += 1;
+                coordenadaVecino = newCoordenada(fila, columna + 1);
+                enqueue(cola, coordenadaVecino);
+            }
+        }
+    }
+    else{
+        if(M[fila - 1][columna - 1] == 'W'){
+            M[fila - 1][columna - 1] = 'V';
+            agregados += 1;
+            coordenadaVecino = newCoordenada(fila - 1, columna - 1);
+            enqueue(cola, coordenadaVecino);
+            }
+        if(M[fila - 1][columna] == 'W'){
+            M[fila - 1][columna] = 'V';
+            agregados += 1;
+            coordenadaVecino = newCoordenada(fila - 1, columna);
+            enqueue(cola, coordenadaVecino);
+        }
+        if(M[fila - 1][columna + 1] == 'W'){
+            M[fila - 1][columna + 1] = 'V';
+            agregados += 1;
+            coordenadaVecino = newCoordenada(fila - 1, columna + 1);
+            enqueue(cola, coordenadaVecino);
+        }
+        if(M[fila][columna + 1] == 'W'){
+            M[fila][columna + 1] = 'V';
+            agregados += 1;
+            coordenadaVecino = newCoordenada(fila, columna + 1);
+            enqueue(cola, coordenadaVecino);
+        }
+        if(M[fila + 1][columna + 1] == 'W'){
+            M[fila + 1][columna + 1] = 'V';
+            agregados += 1;
+            coordenadaVecino = newCoordenada(fila + 1, columna + 1);
+            enqueue(cola, coordenadaVecino);
+        }
+        if(M[fila + 1][columna] == 'W'){
+            M[fila + 1][columna] = 'V';
+            agregados += 1;
+            coordenadaVecino = newCoordenada(fila + 1, columna);
+            enqueue(cola, coordenadaVecino);
+        }
+        if(M[fila + 1][columna - 1] == 'W'){
+            M[fila + 1][columna - 1] = 'V';
+            agregados += 1;
+            coordenadaVecino = newCoordenada(fila + 1, columna - 1);
+            enqueue(cola, coordenadaVecino);
+        }
+        if(M[fila][columna - 1] == 'W'){
+            M[fila][columna - 1] = 'V';
+            agregados += 1;
+            coordenadaVecino = newCoordenada(fila, columna - 1);
+            enqueue(cola, coordenadaVecino);
+        }
+    }
+    return agregados;
+}
 
 char** construirMatriz(){
     int i;
@@ -28,13 +234,14 @@ char** construirMatriz(){
 
 int recorridoAncho(char **M, tCola *Q){
     tCoordenada *Cord;
-
-    while(SCola(Q) != 0){
+    int area = 0;
+    while (SCola(Q) != 0){
         Cord = dequeue(Q);
-        //if(Cord->fila == )
-    }
-    return 0;
+        area += agregarVecinos(Q, Cord, M);
+        }
+    return area;
 }
+
 
 int buscarArea(char **M, int i, int j){
     return 0;
@@ -54,15 +261,15 @@ void calcularArea(char **M){
             tamano = buscarArea(M, i-1, j-1);
         }
         else{
-            M[i][j] = 'P';
+            M[i - 1][j - 1] = 'P';
             Cola = newCola(999);
             tCoordenada *Coordenada = (tCoordenada *)malloc(sizeof(tCoordenada));
-            Coordenada->fila = i-1;
-            Coordenada->columna = j-1;
+            Coordenada = newCoordenada(i - 1, j - 1);
             enqueue(Cola, Coordenada);
             tamano = 1;
             tamano += recorridoAncho(M, Cola);
         }
+        printf("%i\n", tamano);
     }
     for(i = 0; i < 999; i++){
         free(M[i]);
@@ -71,70 +278,10 @@ void calcularArea(char **M){
     return;
 }
 
-void agregarVecinos(tCola * cola, tCoordenada * coordenada, char **M){
-    tCoordenada * coordenadaVecino;
-    int fila = coordenada->fila;
-    int columna = coordenada->columna;
-    if(fila == 0){
-        if(columna == 0){
-            if(M[fila - 1][columna]=='W'){
-                coordenadaVecino = newCoordenada(fila - 1, columna);
-                enqueue(cola, coordenadaVecino);
-            }
-            if(M[fila - 1][columna + 1] == 'W'){
-                coordenadaVecino = newCoordenada(fila - 1, columna + 1);
-                enqueue(cola, coordenadaVecino);
-            }
-            if(M[fila][columna + 1] == 'W'){
-                coordenadaVecino = newCoordenada(fila, columna + 1);
-                enqueue(cola, coordenadaVecino);
-            }
-        }
-        else if(columna == 999){
-            if(M[fila - 1][columna]=='W'){
-                coordenadaVecino = newCoordenada(fila - 1, columna);
-                enqueue(cola, coordenadaVecino);
-            }
-            if(M[fila - 1][columna - 1] == 'W'){
-                coordenadaVecino = newCoordenada(fila - 1, columna - 1);
-                enqueue(cola, coordenadaVecino);
-            }
-            if(M[fila][columna - 1] == 'W'){
-                coordenadaVecino = newCoordenada(fila, columna - 1);
-                enqueue(cola, coordenadaVecino);
-            }
-        }
-        else{
-            if(M[fila][columna - 1] == 'W'){
-                coordenadaVecino = newCoordenada(fila, columna - 1);
-                enqueue(cola, coordenadaVecino);
-            }
-            if(M[fila][columna + 1] == 'W'){
-                coordenadaVecino = newCoordenada(fila, columna + 1);
-                enqueue(cola, coordenadaVecino);
-            }
-            if(M[fila - 1][columna + 1] == 'W'){
-                coordenadaVecino = newCoordenada(fila - 1, columna+1);
-                enqueue(cola, coordenadaVecino);
-            }
-            if(M[fila - 1][columna] == 'W'){
-                coordenadaVecino = newCoordenada(fila - 1, columna);
-                enqueue(cola, coordenadaVecino);
-            }
-            if(M[fila - 1][columna - 1] == 'W'){
-                coordenadaVecino = newCoordenada(fila - 1, columna - 1);
-                enqueue(cola, coordenadaVecino);
-            }
-        }
-    }
-    else if(fila == 999){
-
-    }
-}
-
 int main(){
     char **M;
     M = construirMatriz();
-    //calcularArea(M);
+    calcularArea(M);
     return 0;
 }
+
