@@ -53,7 +53,7 @@ void destroy(tCola * cola){
     for(int i = 0; i < cola->maximoElementos; i++){
         free(&cola->contenido[i]);
     }
-    free(cola->contenido);
+    free(&cola->contenido);
     free(cola);
     return;
 }
@@ -75,12 +75,12 @@ int main(){
     tCola * cola = newCola(3);
     enqueue(cola, co1);
     enqueue(cola, co2);
-
     tCoordenada * co3;
     co3 = dequeue(cola);
     printf("fila: %d columna: %d\n",co3->fila,co3->columna);
-    co3 = dequeue(cola);
-    printf("fila: %d columna: %d\n",co3->fila,co3->columna);
+    destroy(cola);
+    free(co3);
+    free(co1);
+    free(co2);
     return 0;
-}
-*/
+}*/
