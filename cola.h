@@ -11,7 +11,7 @@ typedef struct Cola{
         int size;
         int primero;
         int final;
-        tCoordenada * contenido;
+        tCoordenada **contenido;
 }tCola;
 
 tCola* newCola(int);
