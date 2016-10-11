@@ -12,6 +12,7 @@
 
 int counter = 0, indice = 0, pos = 0;
 int values[999], prints[999];
+char lectura[100];
 
 int agregarVecinos(tCola * cola, tCoordenada * coordenada, char **M){
     int agregados = 0;
@@ -229,7 +230,10 @@ char** construirMatriz(){
     //fgets(letra, sizeof(letra), stdin);
     for(i = 0; i < 999; i++){
         fgets(letra, sizeof(letra), stdin);
-        if((letra[0] != 'W') || (letra[0] != 'L'))  break;
+        if((letra[0] != 'W') && (letra[0] != 'L')){
+        	strcpy(lectura, letra);
+        	break;
+        }
         strcpy(Matriz[i], letra);
     }
     return Matriz;
@@ -261,13 +265,11 @@ void calcularArea(char **M){
     int i, j, tamano;
     tCola *Cola;
     tCoordenada *Coordenada;
-    char linea[10];
     while (1){
-        fgets(linea, sizeof(linea), stdin);
-        if(linea[0] == '\n'){
+        if(lectura[0] == '\n'){
             break;
         }
-        sscanf(linea, "%i %i", &i, &j);
+        sscanf(lectura, "%i %i", &i, &j);
         if(M[i - 1][j - 1] != 'W'){
             tamano = buscarArea(M[i-1][j-1]);
             values[indice] = 'A'+counter;
@@ -291,8 +293,9 @@ void calcularArea(char **M){
         prints[pos] = tamano;
         pos += 1;
         //printf("%i\n", tamano);
+        fgets(lectura, sizeof(lectura), stdin);
     }
-   	prints[pos] = '\n';
+   	prints[pos] = -1;
    	pos += 1;
     destroy(Cola);
     return;
@@ -320,7 +323,7 @@ int main(){
     }
     i = 0;
     while (1){
-    	if(prints[i] == '\n'){
+    	if(prints[i] == -1){
     		printf("\n");
     		i += 1;
     		k += 1;
