@@ -10,8 +10,8 @@
     de la fila
 */
 
-int counter = 0, indice = 0;
-int values[999];
+int counter = 0, indice = 0, pos = 0;
+int values[999], prints[999];
 
 int agregarVecinos(tCola * cola, tCoordenada * coordenada, char **M){
     int agregados = 0;
@@ -226,10 +226,10 @@ char** construirMatriz(){
     for(i = 0; i < 999; i++){
         Matriz[i] = (char *)malloc(sizeof(char)*999);
     }
-    fgets(letra, sizeof(letra), stdin);
+    //fgets(letra, sizeof(letra), stdin);
     for(i = 0; i < 999; i++){
         fgets(letra, sizeof(letra), stdin);
-        if(letra[0] == '\n') break;
+        if((letra[0] != 'W') || (letra[0] != 'L'))  break;
         strcpy(Matriz[i], letra);
     }
     return Matriz;
@@ -288,9 +288,19 @@ void calcularArea(char **M){
         if(('A'+counter == 'W') || ('A'+counter == 'L')){
             counter += 1;
         }
-        printf("%i\n", tamano);
+        prints[pos] = tamano;
+        pos += 1;
+        //printf("%i\n", tamano);
     }
-    for(i = 0; i < 999; i++){
+   	prints[pos] = '\n';
+   	pos += 1;
+    destroy(Cola);
+    return;
+}
+
+void blackhole(char **M){
+	int i;
+	for(i = 0; i < 999; i++){
         free(M[i]);
     }
     free(M);
@@ -298,8 +308,30 @@ void calcularArea(char **M){
 }
 
 int main(){
-    char **M;
-    M = construirMatriz();
-    calcularArea(M);
+    char **M, lec[100];
+    int i, n, k;
+    fgets(lec, sizeof(lec), stdin);
+    sscanf(lec, "%i", &n);
+    fgets(lec, sizeof(lec), stdin);
+    for(i = 0; i < n; i++){
+    	M = construirMatriz();
+    	calcularArea(M);
+    	blackhole(M);	
+    }
+    i = 0;
+    while (1){
+    	if(prints[i] == '\n'){
+    		printf("\n");
+    		i += 1;
+    		k += 1;
+    		if(k == n){
+    			break;
+    		}
+    	}
+    	else{
+    		printf("%i\n", prints[i]);
+    		i += 1;
+    	}
+    }
     return 0;
 }
