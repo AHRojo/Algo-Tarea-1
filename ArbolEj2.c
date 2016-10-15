@@ -1,10 +1,3 @@
-typedef struct guarda{
-  int nivel;
-  int ;
-}num;
-
-
-
 
 
 int * busqueda_num(char* arreglo,int* numeros,int peso,int consultas){
@@ -12,7 +5,8 @@ int * busqueda_num(char* arreglo,int* numeros,int peso,int consultas){
   nivel=-1;
   while (i<consultas){
     i=0;
-    if (numero[i]>peso){
+    j=0;
+    if (numeros[i]>peso){
       if (i==0){
         return 0;
       }
@@ -20,7 +14,17 @@ int * busqueda_num(char* arreglo,int* numeros,int peso,int consultas){
         menor_niv=nivel;
         mayor_num=i;
       }
+      if (strcmp(arreglo[j],"(")) == 0){
+        nivel++;
+        j++;
+        i++;
+      }
+      else{
+        nivel--;
+        j++;
+      }
     }
+    else{
     if (strcmp(arreglo[j],"(")) == 0){
       nivel++;
       j++;
@@ -31,5 +35,6 @@ int * busqueda_num(char* arreglo,int* numeros,int peso,int consultas){
       j++;
     }
   }
-  return i;
+}
+  return mayor_num;
 }
