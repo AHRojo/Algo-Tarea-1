@@ -4,7 +4,7 @@
 
 int  busqueda_num(char* arreglo,int* numeros,int peso,int consultas){
   	int nivel,i,mayor_num,menor_niv = 0,j;
-  	nivel=0;
+  	nivel=-1;
   	i=0;
   	j=0;
   	printf("%i\n", numeros[0]);
@@ -14,11 +14,6 @@ int  busqueda_num(char* arreglo,int* numeros,int peso,int consultas){
     		printf("onegai\n");
       		if (i==0){
         		return 0;
-      		}
-      		if (menor_niv>nivel){
-      			printf("onegai\n");
-        		menor_niv=nivel;
-        		mayor_num=i;
       		}
       		if (arreglo[j] == '('){
       			printf("onegai\n");
@@ -31,6 +26,11 @@ int  busqueda_num(char* arreglo,int* numeros,int peso,int consultas){
         		nivel--;
         		j++;
       		}
+			if (menor_niv>nivel){
+				printf("onegai\n");
+				menor_niv=nivel;
+				mayor_num=i;
+			}
     	}
     else{
     	if (arreglo[j] == '('){
