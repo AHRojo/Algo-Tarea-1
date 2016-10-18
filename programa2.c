@@ -3,11 +3,11 @@
 #include <stdlib.h>
 
 int  busqueda_num(char* arreglo,int* numeros,int peso,int consultas){
-  	int nivel,i,mayor_num,menor_niv = 0,j;
+  	int nivel,i,mayor_num=0,menor_niv = 1000000,j;
   	nivel=-1;
   	i=0;
   	j=0;
-  	while (i<consultas){
+  	while (i<=consultas){
     	if (numeros[i]>peso){
       		if (i==0){
         		return 0;
@@ -24,6 +24,7 @@ int  busqueda_num(char* arreglo,int* numeros,int peso,int consultas){
 			if (menor_niv>nivel){
 				menor_niv=nivel;
 				mayor_num=i;
+				mayor_num--;
 			}
     	}
     else{
@@ -41,8 +42,14 @@ int  busqueda_num(char* arreglo,int* numeros,int peso,int consultas){
   	return mayor_num;
 }
 
+/*
+    Lo unico que realiza main, es guardar en un arreglo los parentesis del arbol, y en otro arreglo de ints
+    guardar los pesos de cada nodo.
+    Ademas determina la cantidad de consultas que se realizaran en el programa.
+*/
+
 int main(){
-	int i = 0, nodos, n, consultas, peso, pos, numero, total, j = 0, k = 0;
+	int i = 0, nodos, n, consultas, peso, pos, numero, j = 0;
     int counter = 0;
 	char linea[1000001];
 	FILE *fp;
@@ -62,14 +69,15 @@ int main(){
             counter += 1;
         }
     }
-	fclose(fp);
-    fgets(linea, sizeof(linea), stdin);
+    fgets(linea, sizeof(linea), fp);
     sscanf(linea, "%i", &consultas);
+    printf("%i\n", consultas);
 	for(i = 0; i < consultas; i++){
-		fgets(linea, sizeof(linea), stdin);
+		fgets(linea, sizeof(linea), fp);
 		sscanf(linea, "%d %d", &pos, &peso);
 		numero = busqueda_num(Parentesis, valores, peso, pos);
         printf("%i\n", numero);
 	}
+    fclose(fp);
 	return 0;
 }
