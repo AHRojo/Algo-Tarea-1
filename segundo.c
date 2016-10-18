@@ -42,6 +42,12 @@ int  busqueda_num(char* arreglo,int* numeros,int peso,int consultas){
   	return mayor_num;
 }
 
+/*
+    Lo unico que realiza main, es guardar en un arreglo los parentesis del arbol, y en otro arreglo de ints
+    guardar los pesos de cada nodo.
+    Ademas determina la cantidad de consultas que se realizaran en el programa.
+*/
+
 int main(){
 	int i = 0, nodos, n, consultas, peso, pos, numero, j = 0;
     int counter = 0;
