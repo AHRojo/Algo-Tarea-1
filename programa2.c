@@ -26,7 +26,7 @@ int  busqueda_num(char* arreglo,int* numeros,int peso,int consultas){
         		nivel--;
         		j++;
       		}
-			if (menor_niv>nivel){
+		if (menor_niv>nivel){
 				printf("onegai\n");
 				menor_niv=nivel;
 				mayor_num=i;
