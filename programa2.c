@@ -7,40 +7,32 @@ int  busqueda_num(char* arreglo,int* numeros,int peso,int consultas){
   	nivel=-1;
   	i=0;
   	j=0;
-  	printf("%i\n", numeros[0]);
-  	while (i<consultas){  
-  		printf("HOLA\n");                       
+  	while (i<consultas){
     	if (numeros[i]>peso){
-    		printf("onegai\n");
       		if (i==0){
         		return 0;
       		}
       		if (arreglo[j] == '('){
-      			printf("onegai\n");
         		nivel++;
         		j++;
         		i++;
       		}
       		else{
-      			printf("onegai\n");
         		nivel--;
         		j++;
       		}
-		if (menor_niv>nivel){
-				printf("onegai\n");
+			if (menor_niv>nivel){
 				menor_niv=nivel;
 				mayor_num=i;
 			}
     	}
     else{
     	if (arreglo[j] == '('){
-    		printf("onegai\n");
       		nivel++;
       		j++;
       		i++;
     	}
     	else{
-    		printf("onegai\n");
       		nivel--;
       		j++;
     		}
@@ -51,38 +43,33 @@ int  busqueda_num(char* arreglo,int* numeros,int peso,int consultas){
 
 int main(){
 	int i = 0, nodos, n, consultas, peso, pos, numero, total, j = 0, k = 0;
+    int counter = 0;
 	char linea[1000001];
 	FILE *fp;
 	fp = fopen("input.dat", "r");
 	fscanf(fp, "%d", &nodos);
 	char Parentesis[nodos*2];
 	int valores[nodos];
-	fscanf(fp, "%s", &Parentesis);
-	fgets(linea, sizeof(linea), fp);
-	char num[10];
-	while(linea[i] != '\0'){
-		j = 0;
-		num[j] = linea[i];
-		j++;
-		while((linea[i+1] != '0') && (linea[i+1] != '1') && (linea[i+1] != '2') && (linea[i+1] != '3') && (linea[i+1] != '4') && (linea[i+1] != '5') && (linea[i+1] != '6') && (linea[i+1] != '7') && (linea[i+1] != '8') && (linea[i+1] != '9')){
-			num[j] = linea[i+1];
-			i++;
-			j++;
-		}
-		num[j+1] = ' ';
-		valores[k] = atoi(num);
-		k++;
-		i++;
-	}
-	printf("%i %i %i", valores[0], valores[1], valores[2]);
-
-	//
+    fscanf(fp, "%s\n", Parentesis);
+    fgets(linea, sizeof(linea), fp);
+    n = strlen(linea);
+	for(i = 0; i < n; i++){
+        if((linea[i] == ' ') || (linea[i] == '\n')){
+            linea[i] = '\0';
+            sscanf(linea+j, "%i", &pos);
+            valores[counter] = pos;
+            j = i + 1;
+            counter += 1;
+        }
+    }
 	fclose(fp);
+    fgets(linea, sizeof(linea), stdin);
+    sscanf(linea, "%i", &consultas);
 	for(i = 0; i < consultas; i++){
 		fgets(linea, sizeof(linea), stdin);
 		sscanf(linea, "%d %d", &pos, &peso);
 		numero = busqueda_num(Parentesis, valores, peso, pos);
-		printf("%i\n", numero);
+        printf("%i\n", numero);
 	}
 	return 0;
 }
