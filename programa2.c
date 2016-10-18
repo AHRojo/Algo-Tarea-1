@@ -4,7 +4,7 @@
 
 int  busqueda_num(char* arreglo,int* numeros,int peso,int consultas){
   	int nivel,i,mayor_num,menor_niv = 0,j;
-  	nivel=0;
+  	nivel=-1;
   	i=0;
   	j=0;
   	printf("%i\n", numeros[0]);
