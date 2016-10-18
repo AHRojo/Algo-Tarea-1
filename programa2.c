@@ -1,6 +1,15 @@
 #include <stdio.h>
 #include <string.h>
 #include <stdlib.h>
+/*
+La funcion busqueda_num es la encarga de realizar en orden log n la busqueda del elemento mayor al peso
+entregado que este mas cerca de la raiz esto lo hace avanzando al mismo tiempo en los parentesis y en
+el arreglo de numeros o arbol de numeros en este caso, la funcion utiliza un arreglo de char para
+almacenar los parentesis y un arreglo de enteros para revisar las posiciones de nodos
+La funcion busca mientras exista la posibilidad de realizar consultas y segun avance en el arreglo de parentesis
+va modificando el nivel del arbol.
+
+*/
 
 int  busqueda_num(char* arreglo,int* numeros,int peso,int consultas){
   	int nivel,i,mayor_num=0,menor_niv = 1000000,j;
